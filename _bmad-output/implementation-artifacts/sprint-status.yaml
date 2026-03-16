@@ -1,0 +1,130 @@
+# generated: 2026-03-06
+# project: mb-wpp
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+#
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+#
+# SPRINT PLAN:
+# ============
+# Sprint 1:  1.1 (sequencial — fundação)
+# Sprint 2:  1.2 → 1.3 → 1.4 → 1.5 (sequenciais — pipeline E2E)
+# Sprint 3:  1.6 ∥ 4.1 (paralelas — UX completa + rate limiting)
+# Sprint 4:  2.1 ∥ 2.2 ∥ 2.3 (paralelas — tools core)
+# Sprint 5:  2.4 ∥ 2.5 ∥ 2.6 (paralelas — tools complementares + orquestração)
+# Prep:      0.1 (sequencial — débitos técnicos + validação E2E, pré-requisito Sprint 6)
+# Sprint 6:  3.1 ∥ 3.2 ∥ 5.1 ∥ 5.2 (paralelas — multimodal + resiliência)
+# Sprint 7:  6.1 ∥ 7.1 ∥ 7.2 (paralelas — feedback + observabilidade)
+# Sprint 8:  7.3 ∥ 8.1 ∥ 8.2 (paralelas — alertas + config dinâmica)
+# Sprint 9:  9.1 ∥ 10.1 (paralelas — quiz + feature flags)
+# Sprint 10: 10.2 (sequencial — shadow mode / validação final)
+
+generated: 2026-03-06
+project: mb-wpp
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+  # ── Sprint 1: Fundação ──
+  epic-1: done
+  1-1-setup-projeto-django-estrutura-base: done
+
+  # ── Sprint 2: Pipeline WhatsApp E2E ──
+  1-2-webhook-whatsapp-middleware-seguranca: done
+  1-3-identificacao-usuario-carregamento-contexto: done
+  1-4-llm-provider-checkpointer-orquestracao-base: done
+  1-5-formatacao-envio-whatsapp-persistencia: done
+
+  # ── Sprint 3: UX Completa + Rate Limiting ──
+  1-6-debounce-boas-vindas-mensagens-nao-suportadas: done
+  epic-1-retrospective: done
+
+  epic-4: done
+  4-1-rate-limiting-dual-sliding-window-token-bucket: done
+  epic-4-retrospective: done
+
+  # ── Sprint 4: Medical Knowledge Tools (Core) ──
+  epic-2: done
+  2-1-rag-medico-busca-base-conhecimento-citacoes: done
+  2-2-web-search-busca-web-citacoes-bloqueio-concorrentes: done
+  2-3-verificacao-artigos-academicos-pubmed: done
+
+  # ── Sprint 5: Medical Tools (Complementares) + Orquestração ──
+  2-4-bulas-de-medicamentos: done
+  2-5-calculadoras-medicas: done
+  2-6-orquestracao-tools-paralelas-toolnode: done
+  epic-2-retrospective: done
+
+  # ── Prep Sprint: Débitos Técnicos + Validação E2E ──
+  epic-0: done
+  0-1-prep-sprint-debitos-tecnicos-validacao-e2e: done
+
+  # ── Sprint 6: Áudio, Imagem + Resiliência ──
+  epic-3: done
+  3-1-transcricao-audio-whisper: done
+  3-2-analise-imagens-vision: done
+  epic-3-retrospective: done
+
+  epic-5: done
+  5-1-retry-automatico-circuit-breaker: done
+  5-2-mensagem-amigavel-resposta-parcial: done
+  epic-5-retrospective: done
+
+  # ── Sprint 7: Feedback + Observabilidade ──
+  epic-6: done
+  6-1-reply-buttons-feedback-comentario-opcional: done
+  epic-6-retrospective: done
+
+  epic-7: done
+  7-1-cost-tracking-callback-costlog: done
+  7-2-traces-end-to-end-langfuse-structlog: done
+
+  # ── Sprint 8: Alertas + Config Dinâmica ──
+  7-3-metricas-qualidade-alertas: done
+  epic-7-retrospective: done
+
+  epic-8: done
+  8-1-config-service-aprimorado-hot-reload-redis-audit-trail: done
+  8-2-system-prompt-versionado-historico-rollback: done
+  epic-8-retrospective: done
+
+  # ── Sprint 9: Quiz + Feature Flags ──
+  epic-9: in-progress
+  9-1-geracao-quiz-sugestao-contextual: done
+  epic-9-retrospective: optional
+
+  epic-10: in-progress
+  10-1-feature-flags-roteamento-gradual-trafego: done
+
+  # ── Sprint 10: Shadow Mode (Final) ──
+  10-2-shadow-mode-comparacao-respostas: backlog
+  epic-10-retrospective: optional

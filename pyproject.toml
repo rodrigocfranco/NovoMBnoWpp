@@ -1,0 +1,70 @@
+[project]
+name = "mb-wpp"
+version = "0.1.0"
+description = "Medbrain WhatsApp - AI Medical Tutor"
+requires-python = ">=3.12"
+
+dependencies = [
+    "django>=5.2,<6.0",
+    "djangorestframework>=3.15",
+    "adrf>=0.1",
+    "django-environ>=0.11",
+    "django-cors-headers>=4.3",
+    "uvicorn>=0.32",
+    "structlog>=24.4",
+    "httpx>=0.28",
+    "redis>=5.2",
+    "pydantic>=2.10",
+    "langgraph>=1.0",
+    "langchain>=1.0",
+    "langchain-anthropic",
+    "langchain-google-vertexai>=3.2.2",
+    "langgraph-checkpoint-postgres>=3.0",
+    "psycopg[binary]>=3.1",
+    "pinecone[asyncio]>=8.0",
+    "tavily-python>=0.5",
+    "langfuse>=4.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-django>=4.8",
+    "pytest-asyncio>=0.24",
+    "pytest-mock>=3.14",
+    "pytest-cov",
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "django-stubs>=5.1",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["search-medway-langgraph", "*/migrations/*"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "S110"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["workflows", "config"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "config.settings.development"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+markers = [
+    "integration: tests requiring real Redis + PostgreSQL (docker compose up -d)",
+    "e2e: end-to-end smoke tests requiring real credentials + docker compose",
+]
